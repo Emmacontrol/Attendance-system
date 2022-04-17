@@ -17,7 +17,7 @@ jobs:
    
     steps:
       - name: clone repo & checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
      
       - name: Set up python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
