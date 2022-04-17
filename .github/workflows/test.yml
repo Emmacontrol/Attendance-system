@@ -1,0 +1,32 @@
+name: staging pipeline deployment
+
+on:
+  push:
+    branches: [ staging ]
+  pull_request:
+    branches: [ staging ]
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: ubuntu-latest
+   
+    steps:
+      - name: clone repo & checkout code
+      - uses: actions/checkout@v2
+     
+      - name: Set up python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with: 
+           python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run:  |
+            python -m pip install --upgrade pip
+            python3 -m pip install virtualenv
+            python3 -m venv venv/'
+            . venv/bin/activate'
+            pip install -r requirements.txt
+            
+           
+ 
