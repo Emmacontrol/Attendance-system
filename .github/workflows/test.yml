@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
-    name: build-and-test
+  test:
+    name: test
     runs-on: ubuntu-latest
     strategy:
       max-parallel : 4
@@ -31,11 +31,14 @@ jobs:
             python3 -m pip install virtualenv
             python3 -m venv venv/
             . venv/bin/activate
-             
-           
-            
-      
-    
-            
-           
- 
+
+      - name: Build 
+        run:  |
+           touch .docker_env
+           cp .env .docker_env
+           chmod 400 docker_sh/start.sh
+           chmod 400 docker_sh/start-celery-worker.sh
+           chmod 400 docker_sh/start-celery-beat.sh
+           rm -rf static
+           rm -rf templates/static
+   
