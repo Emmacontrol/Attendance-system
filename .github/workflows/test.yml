@@ -31,7 +31,9 @@ jobs:
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           python3 get-pip.py --force-reinstall
           pip3 install --user -r requirements.txt
+
           cp /home/ubuntu/drohealth_env/.env.develop .env
+
              
            
             
